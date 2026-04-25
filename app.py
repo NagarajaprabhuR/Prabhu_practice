@@ -1,6 +1,3 @@
 f = open("testfile2.txt", "w")
 f.write("Hello, world")
 f.close()
-a = open("testfile4.txt", "w")
-a.write("Welcome")
-a.close()
