@@ -1,1 +1,26 @@
-
+pipeline{
+    agent any
+    stages{
+        stage('info'){
+            steps{
+                sh """
+                    
+                """
+            }
+        }
+        stage('Built'){
+            steps{
+                sh """
+                    pwd
+                """
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh """
+                    pwd
+                """
+            }
+        }
+    }
+}
