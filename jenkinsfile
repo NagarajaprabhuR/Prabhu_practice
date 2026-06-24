@@ -1,24 +1,20 @@
 pipeline{
     agent any
     stages{
-        stage('info'){
-            steps{
-                sh """
-                    
-                """
-            }
-        }
         stage('Built'){
             steps{
                 sh """
-                    pwd
+                    sudo docker rmi ghcr.io/nagarajaprabhur/nginx:latest 2>/dev/null || true
+                    sudo docker pull ghcr.io/nagarajaprabhur/nginx:latest 
                 """
             }
         }
         stage('deploy'){
             steps{
                 sh """
-                    pwd
+                    sudo docker stop nginx 2>/dev/null || true
+                    sudo docker rm nginx 2>/dev/null || true
+                    sudo docker run -d -p 80:80 -v /root/nginx/index.html:/usr/share/nginx/html/index.html --name nginx ghcr.io/nagarajaprabhur/nginx:latest
                 """
             }
         }
